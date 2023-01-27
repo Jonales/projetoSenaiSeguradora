@@ -8,12 +8,12 @@ import static java.lang.Thread.sleep;
  *
  * @author jonatas.meireles
  */
-public class FrmSplash2 extends javax.swing.JFrame {
+public class FrmSplash extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmSplash2
      */
-    public FrmSplash2() {
+    public FrmSplash() {
         initComponents();
     }
 
@@ -84,27 +84,21 @@ public class FrmSplash2 extends javax.swing.JFrame {
         // TODO add your handling code here:
         new Thread(){
             int i = 0;
-            
             public void run(){
                 while (i < 100){
-                
                     i = i +20;
                     lblcarrega.setText(String.valueOf(i)+"%");
-                    
                     try{
                         sleep(2000);
                     }catch(Exception ex){
-                    }
-                            
+                    }                   
                 }//fecha while
-                 
                 //Para fechar o form do splash
-                FrmSplash2.this.dispose();
+                FrmSplash.this.dispose();
                 //Para chamar o proximo form.
-                new FrmLogin().setVisible(true);
-            }
+                new FrmMenu().setVisible(true);
+            }//Fecha o run
             }.start();    
-        
     }//GEN-LAST:event_formWindowActivated
 
     /**
@@ -124,20 +118,21 @@ public class FrmSplash2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmSplash2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSplash.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmSplash2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSplash.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmSplash2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSplash.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmSplash2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSplash.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmSplash2().setVisible(true);
+                new FrmSplash().setVisible(true);
             }
         });
     }

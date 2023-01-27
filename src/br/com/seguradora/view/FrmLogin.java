@@ -47,6 +47,11 @@ public class FrmLogin extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         jBAcessar.setText("Acessar");
+        jBAcessar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAcessarActionPerformed(evt);
+            }
+        });
         jPanel1.add(jBAcessar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
 
         jLabel3.setText("Senha: ");
@@ -87,6 +92,13 @@ public class FrmLogin extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jBAcessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAcessarActionPerformed
+        // TODO add your handling code here:
+        FrmSplash menu = new  FrmSplash();
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jBAcessarActionPerformed
 
     /**
      * @param args the command line arguments
