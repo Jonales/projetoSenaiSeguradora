@@ -4,17 +4,37 @@
  */
 package br.com.seguradora.view;
 
+import java.sql.Connection;
+import br.com.seguradora.connection.ConectaBanco;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 /**
  *
  * @author jonatas.meireles
  */
 public class FrmLogin extends javax.swing.JFrame {
+    
+    Connection conn = null;
+    PreparedStatement pst = null;
+    ResultSet rs = null;
 
     /**
      * Creates new form Tela01
      */
     public FrmLogin() {
         initComponents();
+        conn = ConectaBanco.getConnection();
+        System.out.println("conexao");
+        if (conn != null) {
+            lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-ok-48.png")));
+            System.out.println("Conectou!");
+        } else {
+            lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-excluir-48.png")));
+            System.out.println("Nao Conectou!");
+        }
     }
 
     /**
@@ -27,24 +47,22 @@ public class FrmLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jBAcessar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jTextLogin = new javax.swing.JTextField();
+        jPasswordSenha = new javax.swing.JPasswordField();
+        jLabel4 = new javax.swing.JLabel();
+        lblStatus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Acesso ao Sistema");
+        setTitle("Login");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(300, 350));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/1474.gif"))); // NOI18N
-        jLabel1.setToolTipText("");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         jBAcessar.setText("Acessar");
         jBAcessar.addActionListener(new java.awt.event.ActionListener() {
@@ -52,24 +70,28 @@ public class FrmLogin extends javax.swing.JFrame {
                 jBAcessarActionPerformed(evt);
             }
         });
-        jPanel1.add(jBAcessar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
+        jPanel1.add(jBAcessar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 120, 25));
 
         jLabel3.setText("Senha: ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 90, 25));
 
         jLabel2.setText("Login: ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 90, 25));
 
-        jTextField1.setText("jTextField1");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextLoginActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, -1, -1));
+        jPanel1.add(jTextLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 120, 25));
+        jPanel1.add(jPasswordSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 120, 25));
 
-        jTextField2.setText("jTextField2");
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, -1, -1));
+        jLabel4.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
+        jLabel4.setText("SEGURADO - lOGIN");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+
+        lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/1474.gif"))); // NOI18N
+        jPanel1.add(lblStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,15 +105,14 @@ public class FrmLogin extends javax.swing.JFrame {
         );
 
         getAccessibleContext().setAccessibleDescription("");
-        getAccessibleContext().setAccessibleParent(jTextField1);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextLoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextLoginActionPerformed
 
     private void jBAcessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAcessarActionPerformed
         // TODO add your handling code here:
@@ -130,7 +151,7 @@ public class FrmLogin extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
+        //</editor-fold> 
         //</editor-fold>
         //</editor-fold>
 
@@ -144,11 +165,36 @@ public class FrmLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAcessar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPasswordField jPasswordSenha;
+    private javax.swing.JTextField jTextLogin;
+    private javax.swing.JLabel lblStatus;
     // End of variables declaration//GEN-END:variables
+
+    public void exibeMensagem(String mensagem) {
+        JOptionPane.showMessageDialog(null, mensagem);
+    }
+    
+    public JPasswordField getjPasswordSenha() {
+        return jPasswordSenha;
+    }
+
+    public void setjPasswordSenha(JPasswordField jPasswordSenha) {
+        this.jPasswordSenha = jPasswordSenha;
+    }
+
+    public JTextField getjTextLogin() {
+        return jTextLogin;
+    }
+
+    public void setjTextLogin(JTextField jTextLogin) {
+        this.jTextLogin = jTextLogin;
+    }
+    
+    
+
+
 }
