@@ -48,12 +48,13 @@ public class DaoLogin {
      * @return 
      */
     public boolean update(ModeloLogin usuario){
+        /*
         for (int i = 0; i < banco.usuario.size(); i++) {
             if(idSaoIguais(Banco.usuario.get(i),usuario)){
                 Banco.usuario.set(i, usuario);
                 return true;
             }
-        }
+        }*/
         return false;      
     }
     
@@ -63,12 +64,13 @@ public class DaoLogin {
      * @return 
      */
     public boolean delete(ModeloLogin usuario){
+        /*
         for (ModeloLogin usuarioLista : Banco.usuario) {
             if(idSaoIguais(usuarioLista,usuario)){
                 Banco.usuario.remove(usuarioLista);
                 return true;
             }
-        }
+        }*/
         return false;
     }
     
@@ -76,21 +78,22 @@ public class DaoLogin {
      * Retorna um arraylist com todos os usuarios do banco de dados
      * @return uma lista com todos os registros do banco
      */
-    public ArrayList<ModeloLogin> selectAll(){
+    /*public ArrayList<ModeloLogin> selectAll(){
         return Banco.usuario;
     }
-    
+    */
     /**
      * Retorna um Objeto do tipo usuario se a funcao encontrar o usuario passado como parâmetro no banco, para considerar sao usado nome e senha
      * @param usuario
      * @return Usuario encontrado no banco de dados
      */
     public ModeloLogin selectPorNomeESenha(ModeloLogin usuario){
+        /*
         for (ModeloLogin usuarioLista : Banco.usuario) {
             if(nomeESenhaSaoIguais(usuarioLista,usuario)){
                 return usuarioLista;
             }
-        }
+        }*/
         return null;
     }
 

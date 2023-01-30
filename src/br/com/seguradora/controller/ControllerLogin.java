@@ -25,7 +25,7 @@ public class ControllerLogin {
             }
     
     public void entrarNoSistema(){
-        
+        /*
         //Pegar os dados da view
         ModeloLogin login = HelperLogin.obterModelo();
               
@@ -33,7 +33,7 @@ public class ControllerLogin {
         DaoLogin daoLogin = new DaoLogin();
         ModeloLogin usuaruioAutenticado = daoLogin.selectPorNomeESenha(usuario);
         
-        //Se o usuario da view que o usuario vindo do banco, vamos direcionar para a tela inicial
+        Se o usuario da view que o usuario vindo do banco, vamos direcionar para a tela inicial
         
         if(usuaruioAutenticado != null){
             //navegar para menu principal
@@ -43,6 +43,7 @@ public class ControllerLogin {
         }else
             //senão vamos mostrar uma mensagem "Usúario ou senha invalidos"
             view.exibeMensagem("Usuario ou senha invalidos");
+            */
     }
     
 }
