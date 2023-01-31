@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.com.seguradora.modelo.dao;
+package br.com.seguradora.dao;
 
 import br.com.seguradora.connection.ConnectionFactory;
 import br.com.seguradora.modelo.ModeloLogin;

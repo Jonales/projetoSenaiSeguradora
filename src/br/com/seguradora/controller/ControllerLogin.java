@@ -6,7 +6,7 @@ package br.com.seguradora.controller;
 
 import br.com.seguradora.controller.helper.HelperLogin;
 import br.com.seguradora.modelo.ModeloLogin;
-import br.com.seguradora.modelo.dao.DaoLogin;
+import br.com.seguradora.dao.DaoLogin;
 import br.com.seguradora.view.FrmLogin;
 import br.com.seguradora.view.FrmSplash;
 /**
