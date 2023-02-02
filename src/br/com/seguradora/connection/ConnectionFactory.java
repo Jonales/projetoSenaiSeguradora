@@ -10,6 +10,8 @@ public class ConnectionFactory {
     private String usuario = "root"; // Usuario do banco
     private String senha = "1234"; // Senha do banco
     
+    
+    
     public Connection getConnection() {
         try {
             return DriverManager.getConnection(caminho,usuario,senha);

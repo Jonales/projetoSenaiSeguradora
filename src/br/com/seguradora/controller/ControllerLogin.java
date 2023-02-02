@@ -42,7 +42,7 @@ public class ControllerLogin {
             //navegar para menu principal
             FrmSplash menu = new FrmSplash();
             menu.setVisible(true);
-            this.view.dispose();
+            view.dispose();
         } else { 
             //senão vamos mostrar uma mensagem "Usúario ou senha invalidos"
             view.exibeMensagem("Usuario ou senha invalidos");
