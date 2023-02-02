@@ -10,7 +10,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,19 +17,15 @@ import javax.swing.JOptionPane;
  * @author Jon
  */
 public class DaoLogin {
-
-    private Connection connection;
-
-    public DaoLogin() {
-        this.connection = new ConnectionFactory().getConnection();
-    }
+    Connection conn;
 
     public ResultSet autenticacaoLogin(ModeloLogin modeloLogin) {
-        connection = (Connection) new DaoLogin();
+        conn = new ConnectionFactory().getConnection();
         
         try {
-            String sql = "select * from login where login = ? and senha = ? ";
-            PreparedStatement stmt = connection.prepareStatement(sql);
+            String sql = "SELECT * FROM seguradora.login where LOGIN = ? and SENHA = ? ";
+            
+            PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, modeloLogin.getLogin());
             stmt.setString(2, modeloLogin.getSenha());
             
@@ -38,7 +33,7 @@ public class DaoLogin {
             return rs;
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "DAOLogin" + e);
+            JOptionPane.showMessageDialog(null, "DAOLogin: " + e);
             return null;
         }
     }
@@ -49,9 +44,12 @@ public class DaoLogin {
      * @param usuario exige que seja passado um objeto do tipo usuario
      */
     public void insert(ModeloLogin usuario) {
-        String sql = "insert into seguradora.login (cargo, nome, login, senha) VALUES(?,?,?,?)";
+        conn = new ConnectionFactory().getConnection();
+       
         try {
-            PreparedStatement stmt = connection.prepareStatement(sql);
+            String sql = "insert into seguradora.login (cargo, nome, login, senha) VALUES(?,?,?,?)";
+             
+            PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, usuario.getCargo());
             stmt.setString(2, usuario.getNome());
             stmt.setString(3, usuario.getLogin());
@@ -59,8 +57,8 @@ public class DaoLogin {
             stmt.execute();
             stmt.close();
 
-        } catch (SQLException u) {
-            throw new RuntimeException(u);
+        } catch (SQLException e) {
+            throw new RuntimeException("DAOLogin: " + e);
         }
     }
 
@@ -96,32 +94,6 @@ public class DaoLogin {
             }
         }*/
         return false;
-    }
-
-    /**
-     * Retorna um arraylist com todos os usuarios do banco de dados
-     *
-     * @return uma lista com todos os registros do banco
-     */
-    /*public ArrayList<ModeloLogin> selectAll(){
-        return Banco.usuario;
-    }
-     */
-    /**
-     * Retorna um Objeto do tipo usuario se a funcao encontrar o usuario passado
-     * como parâmetro no banco, para considerar sao usado nome e senha
-     *
-     * @param usuario
-     * @return Usuario encontrado no banco de dados
-     */
-    public ModeloLogin selectPorNomeESenha(ModeloLogin usuario) {
-        /*
-        for (ModeloLogin usuarioLista : Banco.usuario) {
-            if(nomeESenhaSaoIguais(usuarioLista,usuario)){
-                return usuarioLista;
-            }
-        }*/
-        return null;
     }
 
     /**

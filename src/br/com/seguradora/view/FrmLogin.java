@@ -4,10 +4,13 @@
  */
 package br.com.seguradora.view;
 
-import java.sql.Connection;
+
 import br.com.seguradora.connection.ConectaBanco;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import br.com.seguradora.connection.ConnectionFactory;
+import br.com.seguradora.controller.ControllerLogin;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -16,23 +19,32 @@ import javax.swing.JTextField;
  * @author jonatas.meireles
  */
 public class FrmLogin extends javax.swing.JFrame {
+   
+    private final ControllerLogin controller;
+    private final ConnectionFactory conn;
     
-    Connection conn = null;
+    /*Connection conn = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
-
+        */
     /**
      * Creates new form Tela01
      */
     public FrmLogin() {
         initComponents();
-        conn = ConectaBanco.getConnection();
+        controller =  new ControllerLogin(this);
+        conn =  new ConnectionFactory();
+        
         System.out.println("conexao");
         if (conn != null) {
-            lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-ok-48.png")));
+            lblStatus1.setText("CONECTADO!!!!");
+            lblStatus2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/projeto/dbok.png")));
+            lblStatus3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/projeto/cloud-conn.png")));
             System.out.println("Conectou!");
         } else {
-            lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-excluir-48.png")));
+            lblStatus1.setText("DESCONECTADO!!!!");
+            lblStatus2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/projeto/dberro.png")));
+            lblStatus3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/projeto/cloud-disc.png")));
             System.out.println("Nao Conectou!");
         }
     }
@@ -53,7 +65,10 @@ public class FrmLogin extends javax.swing.JFrame {
         jTextLogin = new javax.swing.JTextField();
         jPasswordSenha = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
-        lblStatus = new javax.swing.JLabel();
+        lblStatus3 = new javax.swing.JLabel();
+        jBSair = new javax.swing.JButton();
+        lblStatus1 = new javax.swing.JLabel();
+        lblStatus2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Login");
@@ -72,10 +87,10 @@ public class FrmLogin extends javax.swing.JFrame {
         });
         jPanel1.add(jBAcessar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 120, 25));
 
-        jLabel3.setText("Senha: ");
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/projeto/key-1.png"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 90, 25));
 
-        jLabel2.setText("Login: ");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/projeto/user.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 90, 25));
 
         jTextLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -90,8 +105,23 @@ public class FrmLogin extends javax.swing.JFrame {
         jLabel4.setText("SEGURADO - lOGIN");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
-        lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/1474.gif"))); // NOI18N
-        jPanel1.add(lblStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+        lblStatus3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/projeto/cloud-disc.png"))); // NOI18N
+        jPanel1.add(lblStatus3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
+
+        jBSair.setText("Sair");
+        jBSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSairActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jBSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 120, 25));
+
+        lblStatus1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblStatus1.setText("status");
+        jPanel1.add(lblStatus1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
+
+        lblStatus2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/projeto/dberro.png"))); // NOI18N
+        jPanel1.add(lblStatus2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,11 +145,18 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextLoginActionPerformed
 
     private void jBAcessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAcessarActionPerformed
-        // TODO add your handling code here:
-        FrmSplash menu = new  FrmSplash();
-        menu.setVisible(true);
-        this.dispose();
+        try {
+            // TODO add your handling code here:
+            this.controller.entrarNoSistema(); // Chama o metodo para comparar o usuario digitado
+        } catch (SQLException ex) {
+            Logger.getLogger(FrmLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBAcessarActionPerformed
+
+    private void jBSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSairActionPerformed
+        // TODO add your handling code here:
+        this.controller.sairDoSistema(); // Chama o metodo para fechar o sistema
+    }//GEN-LAST:event_jBSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,13 +202,16 @@ public class FrmLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAcessar;
+    private javax.swing.JButton jBSair;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordSenha;
     private javax.swing.JTextField jTextLogin;
-    private javax.swing.JLabel lblStatus;
+    private javax.swing.JLabel lblStatus1;
+    private javax.swing.JLabel lblStatus2;
+    private javax.swing.JLabel lblStatus3;
     // End of variables declaration//GEN-END:variables
 
     public void exibeMensagem(String mensagem) {
