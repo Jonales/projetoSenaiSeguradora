@@ -8,10 +8,9 @@ import br.com.seguradora.controller.helper.HelperLogin;
 import br.com.seguradora.modelo.ModeloLogin;
 import br.com.seguradora.dao.DaoLogin;
 import br.com.seguradora.view.FrmLogin;
-import br.com.seguradora.view.FrmSplash;
+import br.com.seguradora.view.FrmMenu;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,7 +39,7 @@ public class ControllerLogin {
         //Se o usuario da view que o usuario vindo do banco, vamos direcionar para a tela inicial
         if (usuaruioAutenticado.next()) {
             //navegar para menu principal
-            FrmSplash menu = new FrmSplash();
+            FrmMenu menu = new FrmMenu();
             menu.setVisible(true);
             view.dispose();
         } else { 

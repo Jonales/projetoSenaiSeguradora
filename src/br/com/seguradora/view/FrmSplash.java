@@ -47,31 +47,34 @@ public class FrmSplash extends javax.swing.JFrame {
 
         jLicon.setForeground(new java.awt.Color(51, 51, 255));
         jLicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/1497 (1).gif"))); // NOI18N
+        jLicon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        lblcarrega.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblcarrega.setForeground(new java.awt.Color(0, 102, 102));
+        lblcarrega.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblcarrega.setText("0%");
+        lblcarrega.setToolTipText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLicon))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(lblcarrega)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGap(14, 14, 14)
+                .addComponent(jLicon)
+                .addContainerGap(17, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblcarrega, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLicon)
+                .addComponent(jLicon, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblcarrega)
-                .addGap(119, 119, 119))
+                .addComponent(lblcarrega, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 95, 100));
@@ -96,7 +99,7 @@ public class FrmSplash extends javax.swing.JFrame {
                 //Para fechar o form do splash
                 FrmSplash.this.dispose();
                 //Para chamar o proximo form.
-                new FrmMenu().setVisible(true);
+                new FrmLogin().setVisible(true);
             }//Fecha o run
             }.start();    
     }//GEN-LAST:event_formWindowActivated
