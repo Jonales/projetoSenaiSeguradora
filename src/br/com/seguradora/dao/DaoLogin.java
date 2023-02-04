@@ -23,7 +23,7 @@ public class DaoLogin {
         conn = new ConnectionFactory().getConnection();
         
         try {
-            String sql = "SELECT * FROM seguradora.login where LOGIN = ? and SENHA = ? ";
+            String sql = "SELECT * FROM seguradora.e4usuarios where LOGIN = ? and SENHA = ? ";
             
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, modeloLogin.getLogin());
@@ -47,7 +47,7 @@ public class DaoLogin {
         conn = new ConnectionFactory().getConnection();
        
         try {
-            String sql = "insert into seguradora.login (cargo, nome, login, senha) VALUES(?,?,?,?)";
+            String sql = "insert into seguradora.e4usuarios (cargo, nome, login, senha) VALUES(?,?,?,?)";
              
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, usuario.getCargo());

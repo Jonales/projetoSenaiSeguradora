@@ -4,17 +4,22 @@
  */
 package br.com.seguradora.view;
 
+import br.com.seguradora.controller.ControllerMenu;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author jonatas.meireles
  */
 public class FrmMenu extends javax.swing.JFrame {
+    private final ControllerMenu controller;
 
     /**
      * Creates new form Tela02
      */
     public FrmMenu() {
         initComponents();
+        controller =  new ControllerMenu(this);
     }
 
     /**
@@ -26,7 +31,7 @@ public class FrmMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanelMenu = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMCadastrarCliente = new javax.swing.JMenu();
@@ -45,8 +50,8 @@ public class FrmMenu extends javax.swing.JFrame {
         jMAtualizarOcorrencia = new javax.swing.JMenuItem();
         jMExcluirOcorrencia = new javax.swing.JMenuItem();
         jMRelatorios = new javax.swing.JMenu();
-        jMAjuda = new javax.swing.JMenu();
         jMSobre = new javax.swing.JMenu();
+        jMAjuda = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Seguradora de Automóveis - SENAI para Todos");
@@ -55,12 +60,31 @@ public class FrmMenu extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 61, -1, -1));
-
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/img_fundo.jpg"))); // NOI18N
         jLabel2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -3, -1, 590));
+
+        javax.swing.GroupLayout jPanelMenuLayout = new javax.swing.GroupLayout(jPanelMenu);
+        jPanelMenu.setLayout(jPanelMenuLayout);
+        jPanelMenuLayout.setHorizontalGroup(
+            jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelMenuLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        jPanelMenuLayout.setVerticalGroup(
+            jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelMenuLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        getContentPane().add(jPanelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 590));
 
         jMCadastrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-myspace-48.png"))); // NOI18N
         jMCadastrarCliente.setText("Cliente");
@@ -151,19 +175,29 @@ public class FrmMenu extends javax.swing.JFrame {
         jMRelatorios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jMenuBar1.add(jMRelatorios);
 
-        jMAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-help-48.png"))); // NOI18N
-        jMAjuda.setText("Ajuda");
-        jMAjuda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jMAjuda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jMAjuda.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jMenuBar1.add(jMAjuda);
-
         jMSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-info-48.png"))); // NOI18N
         jMSobre.setText("Sobre");
         jMSobre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMSobre.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMSobre.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jMSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMSobreActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMSobre);
+
+        jMAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-help-48.png"))); // NOI18N
+        jMAjuda.setText("Ajuda");
+        jMAjuda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMAjuda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jMAjuda.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jMAjuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMAjudaActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jMAjuda);
 
         setJMenuBar(jMenuBar1);
 
@@ -173,11 +207,22 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
+        this.controller.CadastrarCliente();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMExcluirOcorrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMExcluirOcorrenciaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMExcluirOcorrenciaActionPerformed
+
+    private void jMSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSobreActionPerformed
+        // TODO add your handling code here:
+        this.controller.OpcaoMenuSobre();
+    }//GEN-LAST:event_jMSobreActionPerformed
+
+    private void jMAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAjudaActionPerformed
+        // TODO add your handling code here:
+        this.controller.OpcaoMenuAjuda();
+    }//GEN-LAST:event_jMAjudaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,6 +287,6 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelMenu;
     // End of variables declaration//GEN-END:variables
 }

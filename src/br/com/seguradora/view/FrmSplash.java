@@ -92,7 +92,7 @@ public class FrmSplash extends javax.swing.JFrame {
                     i = i +20;
                     lblcarrega.setText(String.valueOf(i)+"%");
                     try{
-                        sleep(2000);
+                        sleep(600);
                     }catch(Exception ex){
                     }                   
                 }//fecha while
