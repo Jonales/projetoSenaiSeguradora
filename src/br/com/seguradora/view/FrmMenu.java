@@ -31,7 +31,7 @@ public class FrmMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelMenu = new javax.swing.JPanel();
+        jDesktopMenu = new javax.swing.JDesktopPane();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMCadastrarCliente = new javax.swing.JMenu();
@@ -63,28 +63,28 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/img_fundo.jpg"))); // NOI18N
         jLabel2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        javax.swing.GroupLayout jPanelMenuLayout = new javax.swing.GroupLayout(jPanelMenu);
-        jPanelMenu.setLayout(jPanelMenuLayout);
-        jPanelMenuLayout.setHorizontalGroup(
-            jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelMenuLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+        jDesktopMenu.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jDesktopMenuLayout = new javax.swing.GroupLayout(jDesktopMenu);
+        jDesktopMenu.setLayout(jDesktopMenuLayout);
+        jDesktopMenuLayout.setHorizontalGroup(
+            jDesktopMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGroup(jDesktopMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDesktopMenuLayout.createSequentialGroup()
                     .addComponent(jLabel2)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
-        jPanelMenuLayout.setVerticalGroup(
-            jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelMenuLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel2)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+        jDesktopMenuLayout.setVerticalGroup(
+            jDesktopMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 590, Short.MAX_VALUE)
+            .addGroup(jDesktopMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDesktopMenuLayout.createSequentialGroup()
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 1, Short.MAX_VALUE)))
         );
 
-        getContentPane().add(jPanelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 590));
+        getContentPane().add(jDesktopMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 590));
 
         jMCadastrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-myspace-48.png"))); // NOI18N
         jMCadastrarCliente.setText("Cliente");
@@ -105,6 +105,11 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMPesquisarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-search-48.png"))); // NOI18N
         jMPesquisarCliente.setText("Pesquisar");
+        jMPesquisarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMPesquisarClienteActionPerformed(evt);
+            }
+        });
         jMCadastrarCliente.add(jMPesquisarCliente);
 
         jMAtualizarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-update-48.png"))); // NOI18N
@@ -224,6 +229,12 @@ public class FrmMenu extends javax.swing.JFrame {
         this.controller.OpcaoMenuAjuda();
     }//GEN-LAST:event_jMAjudaActionPerformed
 
+    private void jMPesquisarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMPesquisarClienteActionPerformed
+        // TODO add your handling code here:
+        this.controller.PesquisarCliente();
+        
+    }//GEN-LAST:event_jMPesquisarClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -267,6 +278,7 @@ public class FrmMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane jDesktopMenu;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMAjuda;
     private javax.swing.JMenuItem jMAtualizarAutomovel;
@@ -287,6 +299,5 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JPanel jPanelMenu;
     // End of variables declaration//GEN-END:variables
 }
