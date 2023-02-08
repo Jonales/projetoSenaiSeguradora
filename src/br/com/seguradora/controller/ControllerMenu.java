@@ -6,7 +6,7 @@ package br.com.seguradora.controller;
 
 import br.com.seguradora.view.FrmCliente;
 import br.com.seguradora.view.FrmMenu;
-import br.com.seguradora.view.NewJInternalFrame;
+import br.com.seguradora.view.JifCliente;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
@@ -37,7 +37,7 @@ public class ControllerMenu {
     
     public void PesquisarCliente(){
         System.out.println("Chamou ControllerMenu");
-        NewJInternalFrame cad = new NewJInternalFrame();
+        JifCliente cad = new JifCliente();
         view.add(cad);
         cad.setVisible(true);
     }

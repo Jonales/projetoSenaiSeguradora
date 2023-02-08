@@ -5,6 +5,7 @@
 package br.com.seguradora.view;
 
 import br.com.seguradora.controller.ControllerMenu;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
 /**
@@ -300,4 +301,13 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
+
+    public JDesktopPane getjDesktopMenu() {
+        return jDesktopMenu;
+    }
+
+    public void setjDesktopMenu(JDesktopPane jDesktopMenu) {
+        this.jDesktopMenu = jDesktopMenu;
+    }
+    
 }

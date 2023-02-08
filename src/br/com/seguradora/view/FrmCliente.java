@@ -4,17 +4,28 @@
  */
 package br.com.seguradora.view;
 
+import br.com.seguradora.controller.ControllerCliente;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Jon
  */
 public class FrmCliente extends javax.swing.JFrame {
+    
+    private final ControllerCliente controller;
 
     /**
      * Creates new form FrmCliente
      */
     public FrmCliente() {
         initComponents();
+        controller = new ControllerCliente(this);
     }
 
     /**
@@ -26,6 +37,7 @@ public class FrmCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLTitulo = new javax.swing.JLabel();
         jLNome = new javax.swing.JLabel();
         jLRg = new javax.swing.JLabel();
         jLCpf = new javax.swing.JLabel();
@@ -37,81 +49,171 @@ public class FrmCliente extends javax.swing.JFrame {
         jLUf = new javax.swing.JLabel();
         jLCep = new javax.swing.JLabel();
         jLTelefone = new javax.swing.JLabel();
+        jLCod = new javax.swing.JLabel();
         jTNome = new javax.swing.JTextField();
         jTRg = new javax.swing.JTextField();
-        jTCpf = new javax.swing.JTextField();
         jTLogradouro = new javax.swing.JTextField();
         jTNr = new javax.swing.JTextField();
         jTComplemento = new javax.swing.JTextField();
         jTBairro = new javax.swing.JTextField();
         jTCidade = new javax.swing.JTextField();
-        jTUf = new javax.swing.JTextField();
-        jTCep = new javax.swing.JTextField();
         jTTelefone = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jBCadastrarCliente = new javax.swing.JButton();
+        jTCod = new javax.swing.JTextField();
+        jFTCpf = new javax.swing.JFormattedTextField();
+        jFCep = new javax.swing.JFormattedTextField();
+        jCBUf = new javax.swing.JComboBox<>();
+        jLEndereco = new javax.swing.JLabel();
+        jBExcluirCliente = new javax.swing.JButton();
+        jBCadastrarCliente1 = new javax.swing.JButton();
+        jBPesquisarCliente = new javax.swing.JButton();
+        jBEditarCliente3 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro Cliente");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMinimumSize(new java.awt.Dimension(450, 500));
+        setMinimumSize(new java.awt.Dimension(650, 520));
+        setPreferredSize(new java.awt.Dimension(650, 520));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLTitulo.setFont(new java.awt.Font("Stylus BT", 1, 36)); // NOI18N
+        jLTitulo.setText("CADASTRO DE CLIENTE");
+        getContentPane().add(jLTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
+
         jLNome.setText("Nome:");
-        getContentPane().add(jLNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 110, 25));
+        getContentPane().add(jLNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 110, 25));
 
         jLRg.setText("RG: ");
-        getContentPane().add(jLRg, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 110, 25));
+        getContentPane().add(jLRg, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 110, 25));
 
         jLCpf.setText("CPF:");
-        getContentPane().add(jLCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 110, 25));
+        getContentPane().add(jLCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 110, 25));
 
         jLLogradouro.setText("Logradouro:");
-        getContentPane().add(jLLogradouro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 110, 25));
+        getContentPane().add(jLLogradouro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 480, 110, 30));
 
-        jLNr.setText("NR:");
-        getContentPane().add(jLNr, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 110, 25));
+        jLNr.setText("Nº:");
+        getContentPane().add(jLNr, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, 110, 30));
 
         jLComplemento.setText("Complemento:");
-        getContentPane().add(jLComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 110, 25));
+        getContentPane().add(jLComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 510, 110, 30));
 
         jLBairro.setText("Bairro:");
-        getContentPane().add(jLBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 110, 25));
+        getContentPane().add(jLBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 540, 110, 30));
 
         jLCidade.setText("Cidade:");
-        getContentPane().add(jLCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 110, 25));
+        getContentPane().add(jLCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 540, 110, 30));
 
         jLUf.setText("UF:");
-        getContentPane().add(jLUf, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 110, 25));
+        getContentPane().add(jLUf, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 570, 110, 30));
 
         jLCep.setText("CEP:");
-        getContentPane().add(jLCep, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 110, 25));
+        getContentPane().add(jLCep, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 570, 110, 30));
 
         jLTelefone.setText("Telefone:");
-        getContentPane().add(jLTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 110, 25));
-        getContentPane().add(jTNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 200, 25));
-        getContentPane().add(jTRg, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 200, 25));
-        getContentPane().add(jTCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 200, 25));
-        getContentPane().add(jTLogradouro, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 200, 25));
-        getContentPane().add(jTNr, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 200, 25));
-        getContentPane().add(jTComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 200, 25));
-        getContentPane().add(jTBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 200, 25));
-        getContentPane().add(jTCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 200, 25));
-        getContentPane().add(jTUf, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 200, 25));
-        getContentPane().add(jTCep, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 200, 25));
-        getContentPane().add(jTTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 200, 25));
+        getContentPane().add(jLTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 110, 25));
 
-        jLabel1.setFont(new java.awt.Font("Stylus BT", 1, 36)); // NOI18N
-        jLabel1.setText("CADASTRO DE CLIENTE");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        jLCod.setText("Cód:");
+        getContentPane().add(jLCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 110, 25));
+        getContentPane().add(jTNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 200, 25));
+        getContentPane().add(jTRg, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 200, 25));
+        getContentPane().add(jTLogradouro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 200, 30));
+        getContentPane().add(jTNr, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 510, 200, 30));
+        getContentPane().add(jTComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 510, 200, 30));
+        getContentPane().add(jTBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 540, 200, 30));
+        getContentPane().add(jTCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 540, 200, 30));
+        getContentPane().add(jTTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 200, 25));
 
-        jBCadastrarCliente.setText("Cadastrar");
-        getContentPane().add(jBCadastrarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 110, 25));
+        jTCod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTCodActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 80, 100, 25));
+
+        try {
+            jFTCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFTCpf.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jFTCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 200, 25));
+
+        try {
+            jFCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFCep.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jFCep.setToolTipText("");
+        jFCep.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        getContentPane().add(jFCep, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 570, 200, 30));
+
+        jCBUf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO", "AC" }));
+        getContentPane().add(jCBUf, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 570, 100, 30));
+
+        jLEndereco.setBackground(new java.awt.Color(204, 204, 204));
+        jLEndereco.setForeground(new java.awt.Color(204, 204, 204));
+        jLEndereco.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLEndereco.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
+        getContentPane().add(jLEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 630, 170));
+
+        jBExcluirCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-delete-bookmark-48.png"))); // NOI18N
+        jBExcluirCliente.setText("Excluir");
+        getContentPane().add(jBExcluirCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 620, 140, 70));
+
+        jBCadastrarCliente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-adicionar-marcador-48.png"))); // NOI18N
+        jBCadastrarCliente1.setText("Cadastrar");
+        jBCadastrarCliente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarCliente1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBCadastrarCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 620, 140, 70));
+
+        jBPesquisarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-search-48.png"))); // NOI18N
+        jBPesquisarCliente.setText("Pesquisar");
+        getContentPane().add(jBPesquisarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 620, 140, 70));
+
+        jBEditarCliente3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-update-48.png"))); // NOI18N
+        jBEditarCliente3.setText("Editar");
+        getContentPane().add(jBEditarCliente3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 620, 140, 70));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 630, 170));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBCadastrarCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarCliente1ActionPerformed
+        try {
+            // TODO add your handling code here:
+            controller.cadastrarCliente();
+        } catch (SQLException ex) {
+            Logger.getLogger(FrmCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        
+    }//GEN-LAST:event_jBCadastrarCliente1ActionPerformed
+
+    private void jTCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCodActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTCodActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,6 +241,9 @@ public class FrmCliente extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrmCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -149,29 +254,136 @@ public class FrmCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBCadastrarCliente;
+    private javax.swing.JButton jBCadastrarCliente1;
+    private javax.swing.JButton jBEditarCliente3;
+    private javax.swing.JButton jBExcluirCliente;
+    private javax.swing.JButton jBPesquisarCliente;
+    private javax.swing.JComboBox<String> jCBUf;
+    private javax.swing.JFormattedTextField jFCep;
+    private javax.swing.JFormattedTextField jFTCpf;
     private javax.swing.JLabel jLBairro;
     private javax.swing.JLabel jLCep;
     private javax.swing.JLabel jLCidade;
+    private javax.swing.JLabel jLCod;
     private javax.swing.JLabel jLComplemento;
     private javax.swing.JLabel jLCpf;
+    private javax.swing.JLabel jLEndereco;
     private javax.swing.JLabel jLLogradouro;
     private javax.swing.JLabel jLNome;
     private javax.swing.JLabel jLNr;
     private javax.swing.JLabel jLRg;
     private javax.swing.JLabel jLTelefone;
+    private javax.swing.JLabel jLTitulo;
     private javax.swing.JLabel jLUf;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTBairro;
-    private javax.swing.JTextField jTCep;
     private javax.swing.JTextField jTCidade;
+    private javax.swing.JTextField jTCod;
     private javax.swing.JTextField jTComplemento;
-    private javax.swing.JTextField jTCpf;
     private javax.swing.JTextField jTLogradouro;
     private javax.swing.JTextField jTNome;
     private javax.swing.JTextField jTNr;
     private javax.swing.JTextField jTRg;
     private javax.swing.JTextField jTTelefone;
-    private javax.swing.JTextField jTUf;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    public JComboBox<String> getjCBUf() {
+        return jCBUf;
+    }
+
+    public void setjCBUf(JComboBox<String> jCBUf) {
+        this.jCBUf = jCBUf;
+    }
+
+    public JFormattedTextField getjFCep() {
+        return jFCep;
+    }
+
+    public void setjFCep(JFormattedTextField jFCep) {
+        this.jFCep = jFCep;
+    }
+
+    public JFormattedTextField getjFTCpf() {
+        return jFTCpf;
+    }
+
+    public void setjFTCpf(JFormattedTextField jFTCpf) {
+        this.jFTCpf = jFTCpf;
+    }
+
+    public JTextField getjTBairro() {
+        return jTBairro;
+    }
+
+    public void setjTBairro(JTextField jTBairro) {
+        this.jTBairro = jTBairro;
+    }
+
+    public JTextField getjTCidade() {
+        return jTCidade;
+    }
+
+    public void setjTCidade(JTextField jTCidade) {
+        this.jTCidade = jTCidade;
+    }
+
+    public JTextField getjTCod() {
+        return jTCod;
+    }
+
+    public void setjTCod(JTextField jTCod) {
+        this.jTCod = jTCod;
+    }
+
+    public JTextField getjTComplemento() {
+        return jTComplemento;
+    }
+
+    public void setjTComplemento(JTextField jTComplemento) {
+        this.jTComplemento = jTComplemento;
+    }
+
+    public JTextField getjTLogradouro() {
+        return jTLogradouro;
+    }
+
+    public void setjTLogradouro(JTextField jTLogradouro) {
+        this.jTLogradouro = jTLogradouro;
+    }
+
+    public JTextField getjTNome() {
+        return jTNome;
+    }
+
+    public void setjTNome(JTextField jTNome) {
+        this.jTNome = jTNome;
+    }
+
+    public JTextField getjTNr() {
+        return jTNr;
+    }
+
+    public void setjTNr(JTextField jTNr) {
+        this.jTNr = jTNr;
+    }
+
+    public JTextField getjTRg() {
+        return jTRg;
+    }
+
+    public void setjTRg(JTextField jTRg) {
+        this.jTRg = jTRg;
+    }
+
+    public JTextField getjTTelefone() {
+        return jTTelefone;
+    }
+
+    public void setjTTelefone(JTextField jTTelefone) {
+        this.jTTelefone = jTTelefone;
+    }
+    
+    
+
 }

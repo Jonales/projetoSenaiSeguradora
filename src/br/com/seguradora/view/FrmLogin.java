@@ -7,7 +7,7 @@ package br.com.seguradora.view;
 
 import br.com.seguradora.connection.ConectaBanco;
 import br.com.seguradora.connection.ConnectionFactory;
-import br.com.seguradora.controller.ControllerLogin;
+import br.com.seguradora.controller.ControllerUsuario;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,7 +20,7 @@ import javax.swing.JTextField;
  */
 public class FrmLogin extends javax.swing.JFrame {
    
-    private final ControllerLogin controller;
+    private final ControllerUsuario controller;
     private final ConnectionFactory conn;
     
     /*Connection conn = null;
@@ -32,7 +32,7 @@ public class FrmLogin extends javax.swing.JFrame {
      */
     public FrmLogin() {
         initComponents();
-        controller =  new ControllerLogin(this);
+        controller =  new ControllerUsuario(this);
         conn =  new ConnectionFactory();
         
         System.out.println("conexao");
