@@ -5,7 +5,10 @@
         <group>
             <file>file:/C:/Users/jonatas.meireles/Documents/GitHub/projetoSenaiSeguradora/src/br/com/seguradora/view/FrmCliente.java</file>
             <file>file:/C:/Users/jonatas.meireles/Documents/GitHub/projetoSenaiSeguradora/src/br/com/seguradora/view/FrmMenu.java</file>
-            <file>file:/C:/Users/jonatas.meireles/Documents/GitHub/projetoSenaiSeguradora/src/br/com/seguradora/controller/ControllerMenu.java</file>
+            <file>file:/C:/Users/jonatas.meireles/Documents/GitHub/projetoSenaiSeguradora/src/br/com/seguradora/view/FrmLogin.java</file>
+            <file>file:/C:/Users/jonatas.meireles/Documents/GitHub/projetoSenaiSeguradora/src/br/com/seguradora/controller/ControllerCliente.java</file>
+            <file>file:/C:/Users/jonatas.meireles/Documents/GitHub/projetoSenaiSeguradora/src/br/com/seguradora/dao/DaoCliente.java</file>
+            <file>file:/C:/Users/jonatas.meireles/Documents/GitHub/projetoSenaiSeguradora/src/br/com/seguradora/view/FrmOcorrencia.java</file>
         </group>
     </open-files>
 </project-private>

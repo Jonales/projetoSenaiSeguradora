@@ -8,7 +8,6 @@ import br.com.seguradora.controller.helper.HelperCliente;
 import br.com.seguradora.dao.DaoCliente;
 import br.com.seguradora.modelo.ModeloCliente;
 import br.com.seguradora.view.FrmCliente;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -28,13 +27,18 @@ public class ControllerCliente {
 
     }
     
-        public void cadastrarCliente() throws SQLException {
-
+    public void cadastrarCliente() throws SQLException {
         //Pegar os dados da view
         ModeloCliente cliente = helper.obterCliente();
 
         //Inserir Cliente no banco
-        dao.insert(cliente);     
+        dao.inserir(cliente);     
     }
+    
+    public void pesquisarCliente() throws SQLException{
+        
+    
+    }
+        
     
 }
