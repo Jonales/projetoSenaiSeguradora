@@ -17,7 +17,7 @@ import java.sql.SQLException;
 public class ControllerCliente {
     
     private DaoCliente dao;
-    private final FrmCliente view;
+    private FrmCliente view;
     private HelperCliente helper;
 
     public ControllerCliente(FrmCliente view) {
@@ -40,6 +40,13 @@ public class ControllerCliente {
 
         //Pesquisa Cliente no banco
         dao.consultar(cliente);
+        
+        if(cliente != null){
+            //navegar para menu principal
+            helper.setarModelo(cliente);
+            System.out.println("Entrou na condicao verdadeira - ControllerHelper");
+        }else
+           System.out.println("Erro - caiu na condição de erro - ControllerHelper");
     }
     
     public void atualizarCliente() throws SQLException{
@@ -48,6 +55,9 @@ public class ControllerCliente {
 
         //Atualiza Cliente no banco
         dao.atualizar(cliente);
+        
+        //limpa dados preenchidos
+        helper.limparTela();
     }
         
     public void apagarCliente() throws SQLException{

@@ -37,5 +37,4 @@ public class HelperUsuario {
         view.getjTextLogin().setText("");
         view.getjPasswordSenha().setText(""); 
     } 
-    
 }

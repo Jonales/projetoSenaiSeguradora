@@ -23,13 +23,6 @@ public class FrmLogin extends javax.swing.JFrame {
     private final ControllerUsuario controller;
     private final ConnectionFactory conn;
     
-    /*Connection conn = null;
-    PreparedStatement pst = null;
-    ResultSet rs = null;
-        */
-    /**
-     * Creates new form Tela01
-     */
     public FrmLogin() {
         initComponents();
         controller =  new ControllerUsuario(this);

@@ -18,7 +18,7 @@ import java.sql.ResultSet;
  * @author jonatas.meireles
  */
 public class DaoCliente {
-    private HelperCliente helper;
+    HelperCliente helper;
     Connection conn;
     ResultSet rs;
     PreparedStatement stmt ;
@@ -72,14 +72,14 @@ public class DaoCliente {
                 
                 helper.limparTela();
                 
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, e);
 
             }
         }
     }
     
-    public void atualizar(ModeloCliente cliente) {
+    public void atualizar(ModeloCliente cliente) { //Metodo para atualizar cadastro, **Funcionando**    
          conn = new ConnectionFactory().getConnection();
 
         String sql = "UPDATE e1cliente SET nome = ?, rg = ?, cpf = ?, logradouro = ?, nr = ?, complemento = ?,"
@@ -100,25 +100,24 @@ public class DaoCliente {
             stmt.setString(11, cliente.getTel());
             stmt.setString(12, cliente.getId());
             
+            System.out.println("Entrou na condicao verdadeira");
             System.out.println(stmt);
-            
+
             int atualizado = stmt.executeUpdate();
 
             if (atualizado == 1) {
                 JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso!");
-                
-                helper.setarModelo(cliente);
-
+  
             } else {
                 JOptionPane.showMessageDialog(null, "Cliente não encontrado");
+
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
-
     }
      
-    public void consultar(ModeloCliente cliente) {//Modelo para consultar Cliente
+    public ModeloCliente consultar(ModeloCliente cliente) {//Modelo para consultar Cliente
         conn = new ConnectionFactory().getConnection();
         String sql = "SELECT * FROM e1cliente WHERE CODIGO=?";
 
@@ -129,25 +128,28 @@ public class DaoCliente {
             rs = stmt.executeQuery();
 
             if (rs.next()) {
+                cliente.setId        (rs.getString("CODIGO"));
                 cliente.setNome       (rs.getString("NOME"));
                 cliente.setRg         (rs.getString("RG"));
                 cliente.setCpf        (rs.getString("CPF"));
-                cliente.setTel        (rs.getString("TEL"));
+                cliente.setLogradouro (rs.getString("LOGRADOURO"));                
+                cliente.setNr         (rs.getString("NR"));                
+                cliente.setComplemento(rs.getString("COMPLEMENTO"));
                 cliente.setBairro     (rs.getString("BAIRRO"));
-                cliente.setCep        (rs.getString("CEP"));
-                cliente.setLogradouro (rs.getString("LOGRADOURO"));
                 cliente.setCidade     (rs.getString("CIDADE"));
                 cliente.setUf         (rs.getString("UF"));
-                cliente.setComplemento(rs.getString("COMPLEMENTO"));
-                cliente.setNr         (rs.getString("NR"));
+                cliente.setCep        (rs.getString("CEP"));
+                cliente.setTel        (rs.getString("TEL"));
                 
-                helper.setarModelo(cliente);
+                System.out.println("Entrou na condicao verdadeira");
+                System.out.println(cliente.getId());
+            return cliente;
                 
             } else {
                 JOptionPane.showMessageDialog(null, "Cliente não encontrado");
-            }
+            } return null;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
-        }
+        } return null;
     }
 }

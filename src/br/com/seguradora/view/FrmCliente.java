@@ -4,6 +4,7 @@
  */
 package br.com.seguradora.view;
 
+import br.com.seguradora.connection.ConnectionFactory;
 import br.com.seguradora.controller.ControllerCliente;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -19,6 +20,7 @@ import javax.swing.JTextField;
 public class FrmCliente extends javax.swing.JFrame {
     
     private final ControllerCliente controller;
+    private final ConnectionFactory conn;
 
     /**
      * Creates new form FrmCliente
@@ -26,6 +28,7 @@ public class FrmCliente extends javax.swing.JFrame {
     public FrmCliente() {
         initComponents();
         controller = new ControllerCliente(this);
+        conn =  new ConnectionFactory();
     }
 
     /**
@@ -418,6 +421,4 @@ public class FrmCliente extends javax.swing.JFrame {
         this.jTTelefone = jTTelefone;
     }
     
-    
-
 }
