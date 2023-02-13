@@ -24,7 +24,6 @@ public class ControllerCliente {
         this.view = view;
         this.dao = new DaoCliente();
         this.helper = new HelperCliente(view);
-
     }
     
     public void cadastrarCliente() throws SQLException {
@@ -36,9 +35,26 @@ public class ControllerCliente {
     }
     
     public void pesquisarCliente() throws SQLException{
-        
+        //Pegar os dados da view
+        ModeloCliente cliente = helper.obterCliente();
+
+        //Pesquisa Cliente no banco
+        dao.consultar(cliente);
+    }
     
+    public void atualizarCliente() throws SQLException{
+        //Pegar os dados da view
+        ModeloCliente cliente = helper.obterCliente();
+
+        //Atualiza Cliente no banco
+        dao.atualizar(cliente);
     }
         
-    
+    public void apagarCliente() throws SQLException{
+        //Pegar os dados da view
+        ModeloCliente cliente = helper.obterCliente();
+
+        //Apaga Cliente no banco
+        dao.remover(cliente);      
+    }
 }

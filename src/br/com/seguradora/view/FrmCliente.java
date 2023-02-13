@@ -185,6 +185,11 @@ public class FrmCliente extends javax.swing.JFrame {
 
         jBEditarCliente3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-update-48.png"))); // NOI18N
         jBEditarCliente3.setText("Editar");
+        jBEditarCliente3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEditarCliente3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jBEditarCliente3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 610, 140, 70));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -225,8 +230,22 @@ public class FrmCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTCodActionPerformed
 
     private void jBPesquisarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPesquisarClienteActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            controller.pesquisarCliente();
+        } catch (SQLException ex) {
+            Logger.getLogger(FrmCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBPesquisarClienteActionPerformed
+
+    private void jBEditarCliente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarCliente3ActionPerformed
+        try {
+            // TODO add your handling code here:
+            controller.atualizarCliente();
+        } catch (SQLException ex) {
+            Logger.getLogger(FrmCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jBEditarCliente3ActionPerformed
 
     /**
      * @param args the command line arguments

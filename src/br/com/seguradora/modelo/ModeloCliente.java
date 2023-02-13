@@ -133,9 +133,4 @@ public class ModeloCliente {
     public void setTel(String tel) {
         this.tel = tel;
     }
-    
-    
-    
-    
-    
 }
