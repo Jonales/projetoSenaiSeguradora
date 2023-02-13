@@ -5,8 +5,9 @@
 package br.com.seguradora.view;
 
 import br.com.seguradora.controller.ControllerMenu;
-import javax.swing.JDesktopPane;
-import javax.swing.JOptionPane;
+import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -36,33 +37,37 @@ public class FrmMenu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMCadastrarCliente = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMClienteAbrir = new javax.swing.JMenuItem();
         jMPesquisarCliente = new javax.swing.JMenuItem();
-        jMAtualizarCliente = new javax.swing.JMenuItem();
-        jMExcluirCliente = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMcadastrarAutomovel = new javax.swing.JMenuItem();
-        jMPesquisarAutomovel = new javax.swing.JMenuItem();
-        jMAtualizarAutomovel = new javax.swing.JMenuItem();
-        jMExcluirAutomovel = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMCadastrarOcorrencia = new javax.swing.JMenuItem();
-        jMPesquisarOcorrencia = new javax.swing.JMenuItem();
-        jMAtualizarOcorrencia = new javax.swing.JMenuItem();
-        jMExcluirOcorrencia = new javax.swing.JMenuItem();
         jMRelatorios = new javax.swing.JMenu();
+        jMAbrirRelatorios = new javax.swing.JMenuItem();
         jMSobre = new javax.swing.JMenu();
+        jMAbrirSobre = new javax.swing.JMenuItem();
         jMAjuda = new javax.swing.JMenu();
+        jMAbrirAjuda = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Seguradora de Automóveis - SENAI para Todos");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMinimumSize(new java.awt.Dimension(1000, 744));
         setName("frmMenu"); // NOI18N
-        setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jDesktopMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jDesktopMenu.setInheritsPopupMenu(true);
+        jDesktopMenu.setMinimumSize(new java.awt.Dimension(1000, 590));
+        jDesktopMenu.setName(""); // NOI18N
+        jDesktopMenu.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jDesktopMenuComponentShown(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/img_fundo.jpg"))); // NOI18N
-        jLabel2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jLabel2.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
 
         jDesktopMenu.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -70,22 +75,15 @@ public class FrmMenu extends javax.swing.JFrame {
         jDesktopMenu.setLayout(jDesktopMenuLayout);
         jDesktopMenuLayout.setHorizontalGroup(
             jDesktopMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
-            .addGroup(jDesktopMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jDesktopMenuLayout.createSequentialGroup()
-                    .addComponent(jLabel2)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jDesktopMenuLayout.setVerticalGroup(
             jDesktopMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
-            .addGroup(jDesktopMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jDesktopMenuLayout.createSequentialGroup()
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 1, Short.MAX_VALUE)))
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jDesktopMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 590));
+        jLabel2.getAccessibleContext().setAccessibleName("");
+        jLabel2.getAccessibleContext().setAccessibleDescription("");
 
         jMCadastrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-myspace-48.png"))); // NOI18N
         jMCadastrarCliente.setText("Cliente");
@@ -95,31 +93,22 @@ public class FrmMenu extends javax.swing.JFrame {
         jMCadastrarCliente.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jMCadastrarCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-adicionar-marcador-48.png"))); // NOI18N
-        jMenuItem1.setText("Cadastrar");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMClienteAbrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMClienteAbrir.setText("Abrir");
+        jMClienteAbrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMClienteAbrirActionPerformed(evt);
             }
         });
-        jMCadastrarCliente.add(jMenuItem1);
+        jMCadastrarCliente.add(jMClienteAbrir);
 
-        jMPesquisarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-search-48.png"))); // NOI18N
-        jMPesquisarCliente.setText("Pesquisar");
+        jMPesquisarCliente.setText("Teste de chamada de JInternalFrame");
         jMPesquisarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMPesquisarClienteActionPerformed(evt);
             }
         });
         jMCadastrarCliente.add(jMPesquisarCliente);
-
-        jMAtualizarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-update-48.png"))); // NOI18N
-        jMAtualizarCliente.setText("Atualizar");
-        jMCadastrarCliente.add(jMAtualizarCliente);
-
-        jMExcluirCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-delete-bookmark-48.png"))); // NOI18N
-        jMExcluirCliente.setText("Excluir");
-        jMCadastrarCliente.add(jMExcluirCliente);
 
         jMenuBar1.add(jMCadastrarCliente);
 
@@ -128,21 +117,14 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenu2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        jMcadastrarAutomovel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-adicionar-marcador-48.png"))); // NOI18N
-        jMcadastrarAutomovel.setText("Cadastrar");
+        jMcadastrarAutomovel.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMcadastrarAutomovel.setText("Abrir");
+        jMcadastrarAutomovel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMcadastrarAutomovelActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMcadastrarAutomovel);
-
-        jMPesquisarAutomovel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-search-48.png"))); // NOI18N
-        jMPesquisarAutomovel.setText("Pesquisar");
-        jMenu2.add(jMPesquisarAutomovel);
-
-        jMAtualizarAutomovel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-update-48.png"))); // NOI18N
-        jMAtualizarAutomovel.setText("Atualizar");
-        jMenu2.add(jMAtualizarAutomovel);
-
-        jMExcluirAutomovel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-delete-bookmark-48.png"))); // NOI18N
-        jMExcluirAutomovel.setText("Excluir");
-        jMenu2.add(jMExcluirAutomovel);
 
         jMenuBar1.add(jMenu2);
 
@@ -151,26 +133,9 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenu3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        jMCadastrarOcorrencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-adicionar-marcador-48.png"))); // NOI18N
+        jMCadastrarOcorrencia.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMCadastrarOcorrencia.setText("Cadastrar");
         jMenu3.add(jMCadastrarOcorrencia);
-
-        jMPesquisarOcorrencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-search-48.png"))); // NOI18N
-        jMPesquisarOcorrencia.setText("Pesquisar");
-        jMenu3.add(jMPesquisarOcorrencia);
-
-        jMAtualizarOcorrencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-update-48.png"))); // NOI18N
-        jMAtualizarOcorrencia.setText("Atualizar");
-        jMenu3.add(jMAtualizarOcorrencia);
-
-        jMExcluirOcorrencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-delete-bookmark-48.png"))); // NOI18N
-        jMExcluirOcorrencia.setText("Excluir");
-        jMExcluirOcorrencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMExcluirOcorrenciaActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMExcluirOcorrencia);
 
         jMenuBar1.add(jMenu3);
 
@@ -179,6 +144,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jMRelatorios.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMRelatorios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMRelatorios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        jMAbrirRelatorios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMAbrirRelatorios.setText("Abrir");
+        jMRelatorios.add(jMAbrirRelatorios);
+
         jMenuBar1.add(jMRelatorios);
 
         jMSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-info-48.png"))); // NOI18N
@@ -191,6 +161,15 @@ public class FrmMenu extends javax.swing.JFrame {
                 jMSobreActionPerformed(evt);
             }
         });
+
+        jMAbrirSobre.setText("Abrir");
+        jMAbrirSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMAbrirSobreActionPerformed(evt);
+            }
+        });
+        jMSobre.add(jMAbrirSobre);
+
         jMenuBar1.add(jMSobre);
 
         jMAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-help-48.png"))); // NOI18N
@@ -203,38 +182,76 @@ public class FrmMenu extends javax.swing.JFrame {
                 jMAjudaActionPerformed(evt);
             }
         });
+
+        jMAbrirAjuda.setText("Abrir");
+        jMAbrirAjuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMAbrirAjudaActionPerformed(evt);
+            }
+        });
+        jMAjuda.add(jMAbrirAjuda);
+
         jMenuBar1.add(jMAjuda);
 
         setJMenuBar(jMenuBar1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jDesktopMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jDesktopMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jMClienteAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMClienteAbrirActionPerformed
         // TODO add your handling code here:
-        this.controller.CadastrarCliente();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMExcluirOcorrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMExcluirOcorrenciaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMExcluirOcorrenciaActionPerformed
+        this.controller.Cliente();
+    }//GEN-LAST:event_jMClienteAbrirActionPerformed
 
     private void jMSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSobreActionPerformed
         // TODO add your handling code here:
-        this.controller.OpcaoMenuSobre();
+        
     }//GEN-LAST:event_jMSobreActionPerformed
 
     private void jMAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAjudaActionPerformed
         // TODO add your handling code here:
-        this.controller.OpcaoMenuAjuda();
+        
     }//GEN-LAST:event_jMAjudaActionPerformed
 
     private void jMPesquisarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMPesquisarClienteActionPerformed
-        // TODO add your handling code here:
-        this.controller.PesquisarCliente();
+        try {
+            // TODO add your handling code here:
+            this.controller.PesquisarCliente();
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(FrmMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_jMPesquisarClienteActionPerformed
+
+    private void jMAbrirAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAbrirAjudaActionPerformed
+        // TODO add your handling code here:
+        this.controller.OpcaoMenuAjuda();
+    }//GEN-LAST:event_jMAbrirAjudaActionPerformed
+
+    private void jMAbrirSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAbrirSobreActionPerformed
+        // TODO add your handling code here:
+        this.controller.OpcaoMenuSobre();
+    }//GEN-LAST:event_jMAbrirSobreActionPerformed
+
+    private void jDesktopMenuComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jDesktopMenuComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jDesktopMenuComponentShown
+
+    private void jMcadastrarAutomovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMcadastrarAutomovelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMcadastrarAutomovelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -281,33 +298,20 @@ public class FrmMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopMenu;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenuItem jMAbrirAjuda;
+    private javax.swing.JMenuItem jMAbrirRelatorios;
+    private javax.swing.JMenuItem jMAbrirSobre;
     private javax.swing.JMenu jMAjuda;
-    private javax.swing.JMenuItem jMAtualizarAutomovel;
-    private javax.swing.JMenuItem jMAtualizarCliente;
-    private javax.swing.JMenuItem jMAtualizarOcorrencia;
     private javax.swing.JMenu jMCadastrarCliente;
     private javax.swing.JMenuItem jMCadastrarOcorrencia;
-    private javax.swing.JMenuItem jMExcluirAutomovel;
-    private javax.swing.JMenuItem jMExcluirCliente;
-    private javax.swing.JMenuItem jMExcluirOcorrencia;
-    private javax.swing.JMenuItem jMPesquisarAutomovel;
+    private javax.swing.JMenuItem jMClienteAbrir;
     private javax.swing.JMenuItem jMPesquisarCliente;
-    private javax.swing.JMenuItem jMPesquisarOcorrencia;
     private javax.swing.JMenu jMRelatorios;
     private javax.swing.JMenu jMSobre;
     private javax.swing.JMenuItem jMcadastrarAutomovel;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
-
-    public JDesktopPane getjDesktopMenu() {
-        return jDesktopMenu;
-    }
-
-    public void setjDesktopMenu(JDesktopPane jDesktopMenu) {
-        this.jDesktopMenu = jDesktopMenu;
-    }
-    
+  
 }
