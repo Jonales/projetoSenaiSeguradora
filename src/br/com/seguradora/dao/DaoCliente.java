@@ -117,7 +117,7 @@ public class DaoCliente {
         }
     }
      
-    public ModeloCliente consultar(ModeloCliente cliente) {//Modelo para consultar Cliente
+    public void consultar(ModeloCliente cliente) {//Modelo para consultar Cliente
         conn = new ConnectionFactory().getConnection();
         String sql = "SELECT * FROM e1cliente WHERE CODIGO=?";
 
@@ -143,13 +143,12 @@ public class DaoCliente {
                 
                 System.out.println("Entrou na condicao verdadeira");
                 System.out.println(cliente.getId());
-            return cliente;
                 
             } else {
                 JOptionPane.showMessageDialog(null, "Cliente não encontrado");
-            } return null;
+            }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
-        } return null;
+        }
     }
 }

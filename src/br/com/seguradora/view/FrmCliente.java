@@ -166,6 +166,11 @@ public class FrmCliente extends javax.swing.JFrame {
 
         jBExcluirCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-delete-bookmark-48.png"))); // NOI18N
         jBExcluirCliente.setText("Excluir");
+        jBExcluirCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBExcluirClienteActionPerformed(evt);
+            }
+        });
         getContentPane().add(jBExcluirCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 610, 140, 70));
 
         jBCadastrarCliente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-adicionar-marcador-48.png"))); // NOI18N
@@ -249,6 +254,15 @@ public class FrmCliente extends javax.swing.JFrame {
             Logger.getLogger(FrmCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jBEditarCliente3ActionPerformed
+
+    private void jBExcluirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirClienteActionPerformed
+        try {
+            // TODO add your handling code here:
+            controller.apagarCliente();
+        } catch (SQLException ex) {
+            Logger.getLogger(FrmCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jBExcluirClienteActionPerformed
 
     /**
      * @param args the command line arguments
