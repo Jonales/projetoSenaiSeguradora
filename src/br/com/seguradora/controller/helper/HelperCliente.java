@@ -49,18 +49,18 @@ public class HelperCliente {
         String cep         = modelo.getCep();
         String tel         = modelo.getTel();
          
-        view.getjTCod().getText();
-        view.getjTNome().getText();
-        view.getjTRg().getText();
-        view.getjFTCpf().getText();
-        view.getjTLogradouro().getText();
-        view.getjTNr().getText();
-        view.getjTComplemento().getText();
-        view.getjTBairro().getText();
-        view.getjTCidade().getText();
-        view.getjCBUf().getSelectedItem();
-        view.getjFCep().getText();
-        view.getjTTelefone().getText();
+        view.getjTCod().setText(id);
+        view.getjTNome().setText(nome);
+        view.getjTRg().setText(rg);
+        view.getjFTCpf().setText(cpf);
+        view.getjTLogradouro().setText(logradouro);
+        view.getjTNr().setText(nr);
+        view.getjTComplemento().setText(complemento);
+        view.getjTBairro().setText(bairro);
+        view.getjTCidade().setText(cidade);
+        view.getjCBUf().setSelectedItem(uf);
+        view.getjFCep().setText(cep);
+        view.getjTTelefone().setText(tel);
     }
     
     public void limparTela(){

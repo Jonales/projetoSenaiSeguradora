@@ -9,6 +9,8 @@ import br.com.seguradora.dao.DaoCliente;
 import br.com.seguradora.modelo.ModeloCliente;
 import br.com.seguradora.view.FrmCliente;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
 
 /**
  *
@@ -31,7 +33,10 @@ public class ControllerCliente {
         ModeloCliente cliente = helper.obterCliente();
 
         //Inserir Cliente no banco
-        dao.inserir(cliente);     
+        dao.inserir(cliente); 
+        
+        //limpa dados preenchidos
+        helper.limparTela();
     }
     
     public void pesquisarCliente() throws SQLException{
@@ -45,8 +50,12 @@ public class ControllerCliente {
             //navegar para menu principal
             helper.setarModelo(cliente);
             System.out.println("Entrou na condicao verdadeira - ControllerHelper");
+            //limpa dados preenchidos
+            helper.limparTela();
         }else
            System.out.println("Erro - caiu na condição de erro - ControllerHelper");
+            //limpa dados preenchidos
+            helper.limparTela();
     }
     
     public void atualizarCliente() throws SQLException{
@@ -65,6 +74,23 @@ public class ControllerCliente {
         ModeloCliente cliente = helper.obterCliente();
 
         //Apaga Cliente no banco
-        dao.remover(cliente);      
+        dao.remover(cliente); 
+        
+        //limpa dados preenchidos
+        helper.limparTela();
     }
+    
+    public void relCliente () throws SQLException{
+        int confirma = JOptionPane.showConfirmDialog(null,"Confirma impressão?","",JOptionPane.YES_NO_OPTION);
+        String caminho = "RelatorioCliente.jasper"; ///c:/RelatorioCliente.jasper
+        if (confirma == JOptionPane.YES_OPTION){
+        try {
+        net.sf.jasperreports.engine.JasperPrint print = net.sf.jasperreports.engine.JasperFillManager.fillReport(caminho,null,conexao);
+        net.sf.jasperreports.view.JasperViewer.viewReport(print,false);
+        } catch (JRException e) {
+        JOptionPane.showMessageDialog(null,e);
+        }
+    }
+    }
+    
 }

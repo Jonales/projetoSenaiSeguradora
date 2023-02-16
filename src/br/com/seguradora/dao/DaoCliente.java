@@ -18,7 +18,7 @@ import java.sql.ResultSet;
  * @author jonatas.meireles
  */
 public class DaoCliente {
-    HelperCliente helper;
+    public HelperCliente helper;
     Connection conn;
     ResultSet rs;
     PreparedStatement stmt ;
@@ -51,7 +51,6 @@ public class DaoCliente {
          
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "DAOCliente: " + e);
-            //throw new RuntimeException("DAOCliente: " + e);
         }
     }
     
@@ -70,7 +69,7 @@ public class DaoCliente {
 
                 JOptionPane.showMessageDialog(null, "Cliente removido com sucesso!!!!");
                 
-                helper.limparTela();
+                //helper.limparTela();
                 
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, e);
@@ -80,7 +79,7 @@ public class DaoCliente {
     }
     
     public void atualizar(ModeloCliente cliente) { //Metodo para atualizar cadastro, **Funcionando**    
-         conn = new ConnectionFactory().getConnection();
+        conn = new ConnectionFactory().getConnection();
 
         String sql = "UPDATE e1cliente SET nome = ?, rg = ?, cpf = ?, logradouro = ?, nr = ?, complemento = ?,"
                 + " bairro = ?, cidade = ?, uf = ?, cep = ?, tel = ? WHERE CODIGO = ?";
@@ -128,7 +127,9 @@ public class DaoCliente {
             rs = stmt.executeQuery();
 
             if (rs.next()) {
-                cliente.setId        (rs.getString("CODIGO"));
+                
+                
+                cliente.setId         (rs.getString("CODIGO"));
                 cliente.setNome       (rs.getString("NOME"));
                 cliente.setRg         (rs.getString("RG"));
                 cliente.setCpf        (rs.getString("CPF"));
@@ -141,8 +142,20 @@ public class DaoCliente {
                 cliente.setCep        (rs.getString("CEP"));
                 cliente.setTel        (rs.getString("TEL"));
                 
-                System.out.println("Entrou na condicao verdadeira");
+                System.out.println("Entrou no DaoCliente");
                 System.out.println(cliente.getId());
+                System.out.println(cliente.getNome());
+                System.out.println(cliente.getRg());
+                System.out.println(cliente.getCpf());
+                System.out.println(cliente.getLogradouro());            
+                System.out.println(cliente.getNr());      
+                System.out.println(cliente.getComplemento());
+                System.out.println(cliente.getBairro());
+                System.out.println(cliente.getCidade());
+                System.out.println(cliente.getUf());
+                System.out.println(cliente.getCep()); 
+                System.out.println(cliente.getTel());
+                
                 
             } else {
                 JOptionPane.showMessageDialog(null, "Cliente não encontrado");

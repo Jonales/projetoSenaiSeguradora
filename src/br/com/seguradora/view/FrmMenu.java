@@ -40,9 +40,9 @@ public class FrmMenu extends javax.swing.JFrame {
         jMClienteAbrir = new javax.swing.JMenuItem();
         jMPesquisarCliente = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMcadastrarAutomovel = new javax.swing.JMenuItem();
+        jMAbrirAutomovel = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMCadastrarOcorrencia = new javax.swing.JMenuItem();
+        jMAbrirOcorrencia = new javax.swing.JMenuItem();
         jMRelatorios = new javax.swing.JMenu();
         jMAbrirRelatorios = new javax.swing.JMenuItem();
         jMSobre = new javax.swing.JMenu();
@@ -55,6 +55,7 @@ public class FrmMenu extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(1000, 744));
         setName("frmMenu"); // NOI18N
+        setResizable(false);
 
         jDesktopMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jDesktopMenu.setInheritsPopupMenu(true);
@@ -117,14 +118,23 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenu2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        jMcadastrarAutomovel.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMcadastrarAutomovel.setText("Abrir");
-        jMcadastrarAutomovel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMcadastrarAutomovelActionPerformed(evt);
+        jMAbrirAutomovel.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMAbrirAutomovel.setText("Abrir");
+        jMAbrirAutomovel.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jMAbrirAutomovelAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        jMenu2.add(jMcadastrarAutomovel);
+        jMAbrirAutomovel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMAbrirAutomovelActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMAbrirAutomovel);
 
         jMenuBar1.add(jMenu2);
 
@@ -133,9 +143,14 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenu3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        jMCadastrarOcorrencia.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMCadastrarOcorrencia.setText("Cadastrar");
-        jMenu3.add(jMCadastrarOcorrencia);
+        jMAbrirOcorrencia.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMAbrirOcorrencia.setText("Abrir");
+        jMAbrirOcorrencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMAbrirOcorrenciaActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMAbrirOcorrencia);
 
         jMenuBar1.add(jMenu3);
 
@@ -212,7 +227,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void jMClienteAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMClienteAbrirActionPerformed
         // TODO add your handling code here:
-        this.controller.Cliente();
+        controller.Cliente();
     }//GEN-LAST:event_jMClienteAbrirActionPerformed
 
     private void jMSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSobreActionPerformed
@@ -228,11 +243,10 @@ public class FrmMenu extends javax.swing.JFrame {
     private void jMPesquisarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMPesquisarClienteActionPerformed
         try {
             // TODO add your handling code here:
-            this.controller.PesquisarCliente();
+            controller.PesquisarCliente();
         } catch (PropertyVetoException ex) {
             Logger.getLogger(FrmMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }//GEN-LAST:event_jMPesquisarClienteActionPerformed
 
     private void jMAbrirAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAbrirAjudaActionPerformed
@@ -249,9 +263,20 @@ public class FrmMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jDesktopMenuComponentShown
 
-    private void jMcadastrarAutomovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMcadastrarAutomovelActionPerformed
+    private void jMAbrirAutomovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAbrirAutomovelActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMcadastrarAutomovelActionPerformed
+        controller.Automovel();
+        
+    }//GEN-LAST:event_jMAbrirAutomovelActionPerformed
+
+    private void jMAbrirAutomovelAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jMAbrirAutomovelAncestorAdded
+         //TODO add your handling code here:
+    }//GEN-LAST:event_jMAbrirAutomovelAncestorAdded
+
+    private void jMAbrirOcorrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAbrirOcorrenciaActionPerformed
+        // TODO add your handling code here:
+        controller.Ocorrencia();
+    }//GEN-LAST:event_jMAbrirOcorrenciaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,16 +324,16 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopMenu;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMAbrirAjuda;
+    private javax.swing.JMenuItem jMAbrirAutomovel;
+    private javax.swing.JMenuItem jMAbrirOcorrencia;
     private javax.swing.JMenuItem jMAbrirRelatorios;
     private javax.swing.JMenuItem jMAbrirSobre;
     private javax.swing.JMenu jMAjuda;
     private javax.swing.JMenu jMCadastrarCliente;
-    private javax.swing.JMenuItem jMCadastrarOcorrencia;
     private javax.swing.JMenuItem jMClienteAbrir;
     private javax.swing.JMenuItem jMPesquisarCliente;
     private javax.swing.JMenu jMRelatorios;
     private javax.swing.JMenu jMSobre;
-    private javax.swing.JMenuItem jMcadastrarAutomovel;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;

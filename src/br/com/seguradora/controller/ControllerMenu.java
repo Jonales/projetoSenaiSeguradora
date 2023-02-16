@@ -4,8 +4,10 @@
  */
 package br.com.seguradora.controller;
 
+import br.com.seguradora.view.FrmAutomovel;
 import br.com.seguradora.view.FrmCliente;
 import br.com.seguradora.view.FrmMenu;
+import br.com.seguradora.view.FrmOcorrencia;
 import br.com.seguradora.view.jInternalFrame.JifCliente;
 import java.awt.event.ComponentListener;
 import java.beans.PropertyVetoException;
@@ -31,8 +33,8 @@ public class ControllerMenu {
     
     public void Cliente(){
         System.out.println("Chamou ControllerMenu 'Cliente'.");
-        FrmCliente cad = new FrmCliente();
-        cad.setVisible(true);
+        FrmCliente cliente = new FrmCliente();
+        cliente.setVisible(true);
         //this.view.NewJInternalFrame;
     }
     
@@ -45,11 +47,15 @@ public class ControllerMenu {
     
     public void Automovel(){
         System.out.println("Chamou ControllerMenu 'Automovel'.");
+        FrmAutomovel automovel = new FrmAutomovel();
+        automovel.setVisible(true);
 
     }
     
     public void Ocorrencia(){
         System.out.println("Chamou ControllerMenu 'Ocorrencia'.");
+        FrmOcorrencia ocorrencia = new FrmOcorrencia();
+        ocorrencia.setVisible(true);
 
     }
     

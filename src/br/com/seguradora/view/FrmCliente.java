@@ -67,24 +67,25 @@ public class FrmCliente extends javax.swing.JFrame {
         jFCep = new javax.swing.JFormattedTextField();
         jCBUf = new javax.swing.JComboBox<>();
         jLEndereco = new javax.swing.JLabel();
-        jBExcluirCliente = new javax.swing.JButton();
+        jBImprimirCliente = new javax.swing.JButton();
         jBCadastrarCliente1 = new javax.swing.JButton();
         jBPesquisarCliente = new javax.swing.JButton();
         jBEditarCliente3 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        jBExcluirCliente1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro Cliente");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMinimumSize(new java.awt.Dimension(670, 735));
-        setPreferredSize(new java.awt.Dimension(670, 735));
+        setMinimumSize(new java.awt.Dimension(670, 550));
+        setPreferredSize(new java.awt.Dimension(670, 550));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLTitulo.setFont(new java.awt.Font("Stylus BT", 1, 36)); // NOI18N
         jLTitulo.setText("CADASTRO DE CLIENTE");
-        getContentPane().add(jLTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
+        getContentPane().add(jLTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
 
         jLNome.setText("Nome:");
         getContentPane().add(jLNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 110, 25));
@@ -96,25 +97,25 @@ public class FrmCliente extends javax.swing.JFrame {
         getContentPane().add(jLCpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 110, 25));
 
         jLLogradouro.setText("Logradouro:");
-        getContentPane().add(jLLogradouro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, 110, 30));
+        getContentPane().add(jLLogradouro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 110, 30));
 
         jLNr.setText("Nº:");
-        getContentPane().add(jLNr, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 490, 110, 30));
+        getContentPane().add(jLNr, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, 110, 30));
 
         jLComplemento.setText("Complemento:");
-        getContentPane().add(jLComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, 110, 30));
+        getContentPane().add(jLComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, 110, 30));
 
         jLBairro.setText("Bairro:");
-        getContentPane().add(jLBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 520, 110, 30));
+        getContentPane().add(jLBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 110, 30));
 
         jLCidade.setText("Cidade:");
-        getContentPane().add(jLCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 520, 110, 30));
+        getContentPane().add(jLCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 110, 30));
 
         jLUf.setText("UF:");
-        getContentPane().add(jLUf, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 550, 110, 30));
+        getContentPane().add(jLUf, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 110, 30));
 
         jLCep.setText("CEP:");
-        getContentPane().add(jLCep, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 550, 110, 30));
+        getContentPane().add(jLCep, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, 110, 30));
 
         jLTelefone.setText("Telefone:");
         getContentPane().add(jLTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 110, 25));
@@ -123,11 +124,11 @@ public class FrmCliente extends javax.swing.JFrame {
         getContentPane().add(jLCod, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 110, 25));
         getContentPane().add(jTNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 200, 25));
         getContentPane().add(jTRg, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, 200, 25));
-        getContentPane().add(jTLogradouro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, 200, 30));
-        getContentPane().add(jTNr, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 490, 200, 30));
-        getContentPane().add(jTComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, 200, 30));
-        getContentPane().add(jTBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 520, 200, 30));
-        getContentPane().add(jTCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 520, 200, 30));
+        getContentPane().add(jTLogradouro, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 200, 30));
+        getContentPane().add(jTNr, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, 200, 30));
+        getContentPane().add(jTComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 200, 30));
+        getContentPane().add(jTBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 200, 30));
+        getContentPane().add(jTCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 200, 30));
         getContentPane().add(jTTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 200, 25));
 
         jTCod.addActionListener(new java.awt.event.ActionListener() {
@@ -153,25 +154,25 @@ public class FrmCliente extends javax.swing.JFrame {
         jFCep.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jFCep.setToolTipText("");
         jFCep.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        getContentPane().add(jFCep, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 550, 200, 30));
+        getContentPane().add(jFCep, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 370, 200, 30));
 
         jCBUf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO", "AC" }));
-        getContentPane().add(jCBUf, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 550, 100, 30));
+        getContentPane().add(jCBUf, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 100, 30));
 
         jLEndereco.setBackground(new java.awt.Color(204, 204, 204));
         jLEndereco.setForeground(new java.awt.Color(204, 204, 204));
         jLEndereco.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLEndereco.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
-        getContentPane().add(jLEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 630, 170));
+        getContentPane().add(jLEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 630, 170));
 
-        jBExcluirCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-delete-bookmark-48.png"))); // NOI18N
-        jBExcluirCliente.setText("Excluir");
-        jBExcluirCliente.addActionListener(new java.awt.event.ActionListener() {
+        jBImprimirCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/printer_resized.png"))); // NOI18N
+        jBImprimirCliente.setText("Imprimir");
+        jBImprimirCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBExcluirClienteActionPerformed(evt);
+                jBImprimirClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(jBExcluirCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 610, 140, 70));
+        getContentPane().add(jBImprimirCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, 140, 70));
 
         jBCadastrarCliente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-adicionar-marcador-48.png"))); // NOI18N
         jBCadastrarCliente1.setText("Cadastrar");
@@ -180,7 +181,7 @@ public class FrmCliente extends javax.swing.JFrame {
                 jBCadastrarCliente1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jBCadastrarCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 610, 140, 70));
+        getContentPane().add(jBCadastrarCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, 140, 70));
 
         jBPesquisarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-search-48.png"))); // NOI18N
         jBPesquisarCliente.setText("Pesquisar");
@@ -189,7 +190,7 @@ public class FrmCliente extends javax.swing.JFrame {
                 jBPesquisarClienteActionPerformed(evt);
             }
         });
-        getContentPane().add(jBPesquisarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 610, 140, 70));
+        getContentPane().add(jBPesquisarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 140, 70));
 
         jBEditarCliente3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-update-48.png"))); // NOI18N
         jBEditarCliente3.setText("Editar");
@@ -198,25 +199,22 @@ public class FrmCliente extends javax.swing.JFrame {
                 jBEditarCliente3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jBEditarCliente3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 610, 140, 70));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 630, 170));
+        getContentPane().add(jBEditarCliente3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 430, 140, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/projeto/userPesquisar.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 70, 50));
+
+        jBExcluirCliente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-delete-bookmark-48.png"))); // NOI18N
+        jBExcluirCliente1.setText("Excluir");
+        jBExcluirCliente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBExcluirCliente1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBExcluirCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 430, 140, 70));
+
+        jLabel3.setText("_______________________________________________________________________");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -255,14 +253,13 @@ public class FrmCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBEditarCliente3ActionPerformed
 
-    private void jBExcluirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirClienteActionPerformed
-        try {
-            // TODO add your handling code here:
-            controller.apagarCliente();
-        } catch (SQLException ex) {
-            Logger.getLogger(FrmCliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jBExcluirClienteActionPerformed
+    private void jBImprimirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBImprimirClienteActionPerformed
+
+    }//GEN-LAST:event_jBImprimirClienteActionPerformed
+
+    private void jBExcluirCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirCliente1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBExcluirCliente1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -305,7 +302,8 @@ public class FrmCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCadastrarCliente1;
     private javax.swing.JButton jBEditarCliente3;
-    private javax.swing.JButton jBExcluirCliente;
+    private javax.swing.JButton jBExcluirCliente1;
+    private javax.swing.JButton jBImprimirCliente;
     private javax.swing.JButton jBPesquisarCliente;
     private javax.swing.JComboBox<String> jCBUf;
     private javax.swing.JFormattedTextField jFCep;
@@ -325,7 +323,7 @@ public class FrmCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLTitulo;
     private javax.swing.JLabel jLUf;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTextField jTBairro;
     private javax.swing.JTextField jTCidade;
@@ -336,7 +334,6 @@ public class FrmCliente extends javax.swing.JFrame {
     private javax.swing.JTextField jTNr;
     private javax.swing.JTextField jTRg;
     private javax.swing.JTextField jTTelefone;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
     public JComboBox<String> getjCBUf() {
