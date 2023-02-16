@@ -46,9 +46,8 @@ public class FrmMenu extends javax.swing.JFrame {
         jMRelatorios = new javax.swing.JMenu();
         jMAbrirRelatorios = new javax.swing.JMenuItem();
         jMSobre = new javax.swing.JMenu();
-        jMAbrirSobre = new javax.swing.JMenuItem();
         jMAjuda = new javax.swing.JMenu();
-        jMAbrirAjuda = new javax.swing.JMenuItem();
+        jMSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Seguradora de Automóveis - SENAI para Todos");
@@ -76,11 +75,15 @@ public class FrmMenu extends javax.swing.JFrame {
         jDesktopMenu.setLayout(jDesktopMenuLayout);
         jDesktopMenuLayout.setHorizontalGroup(
             jDesktopMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopMenuLayout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         jDesktopMenuLayout.setVerticalGroup(
             jDesktopMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jDesktopMenuLayout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jLabel2.getAccessibleContext().setAccessibleName("");
@@ -171,20 +174,16 @@ public class FrmMenu extends javax.swing.JFrame {
         jMSobre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMSobre.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMSobre.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jMSobre.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jMSobreItemStateChanged(evt);
+            }
+        });
         jMSobre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMSobreActionPerformed(evt);
             }
         });
-
-        jMAbrirSobre.setText("Abrir");
-        jMAbrirSobre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMAbrirSobreActionPerformed(evt);
-            }
-        });
-        jMSobre.add(jMAbrirSobre);
-
         jMenuBar1.add(jMSobre);
 
         jMAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-help-48.png"))); // NOI18N
@@ -192,21 +191,30 @@ public class FrmMenu extends javax.swing.JFrame {
         jMAjuda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMAjuda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMAjuda.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jMAjuda.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jMAjudaItemStateChanged(evt);
+            }
+        });
         jMAjuda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMAjudaActionPerformed(evt);
             }
         });
+        jMenuBar1.add(jMAjuda);
 
-        jMAbrirAjuda.setText("Abrir");
-        jMAbrirAjuda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMAbrirAjudaActionPerformed(evt);
+        jMSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/icons8-excluir-48.png"))); // NOI18N
+        jMSair.setText("Sair");
+        jMSair.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jMSair.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jMSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jMSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jMSair.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jMSairItemStateChanged(evt);
             }
         });
-        jMAjuda.add(jMAbrirAjuda);
-
-        jMenuBar1.add(jMAjuda);
+        jMenuBar1.add(jMSair);
 
         setJMenuBar(jMenuBar1);
 
@@ -214,7 +222,7 @@ public class FrmMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jDesktopMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,7 +235,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void jMClienteAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMClienteAbrirActionPerformed
         // TODO add your handling code here:
-        controller.Cliente();
+        this.controller.Cliente();
     }//GEN-LAST:event_jMClienteAbrirActionPerformed
 
     private void jMSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSobreActionPerformed
@@ -243,21 +251,11 @@ public class FrmMenu extends javax.swing.JFrame {
     private void jMPesquisarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMPesquisarClienteActionPerformed
         try {
             // TODO add your handling code here:
-            controller.PesquisarCliente();
+            this.controller.PesquisarCliente();
         } catch (PropertyVetoException ex) {
             Logger.getLogger(FrmMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMPesquisarClienteActionPerformed
-
-    private void jMAbrirAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAbrirAjudaActionPerformed
-        // TODO add your handling code here:
-        this.controller.OpcaoMenuAjuda();
-    }//GEN-LAST:event_jMAbrirAjudaActionPerformed
-
-    private void jMAbrirSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAbrirSobreActionPerformed
-        // TODO add your handling code here:
-        this.controller.OpcaoMenuSobre();
-    }//GEN-LAST:event_jMAbrirSobreActionPerformed
 
     private void jDesktopMenuComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jDesktopMenuComponentShown
         // TODO add your handling code here:
@@ -265,7 +263,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void jMAbrirAutomovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAbrirAutomovelActionPerformed
         // TODO add your handling code here:
-        controller.Automovel();
+        this.controller.Automovel();
         
     }//GEN-LAST:event_jMAbrirAutomovelActionPerformed
 
@@ -275,8 +273,24 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void jMAbrirOcorrenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAbrirOcorrenciaActionPerformed
         // TODO add your handling code here:
-        controller.Ocorrencia();
+        this.controller.Ocorrencia();
     }//GEN-LAST:event_jMAbrirOcorrenciaActionPerformed
+
+    private void jMSairItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jMSairItemStateChanged
+        // TODO add your handling code here:
+        //this.dispose();
+        
+    }//GEN-LAST:event_jMSairItemStateChanged
+
+    private void jMAjudaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jMAjudaItemStateChanged
+        // TODO add your handling code here:
+        //this.controller.OpcaoMenuAjuda();
+    }//GEN-LAST:event_jMAjudaItemStateChanged
+
+    private void jMSobreItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jMSobreItemStateChanged
+        // TODO add your handling code here:
+        //this.controller.OpcaoMenuSobre();
+    }//GEN-LAST:event_jMSobreItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -323,16 +337,15 @@ public class FrmMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopMenu;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenuItem jMAbrirAjuda;
     private javax.swing.JMenuItem jMAbrirAutomovel;
     private javax.swing.JMenuItem jMAbrirOcorrencia;
     private javax.swing.JMenuItem jMAbrirRelatorios;
-    private javax.swing.JMenuItem jMAbrirSobre;
     private javax.swing.JMenu jMAjuda;
     private javax.swing.JMenu jMCadastrarCliente;
     private javax.swing.JMenuItem jMClienteAbrir;
     private javax.swing.JMenuItem jMPesquisarCliente;
     private javax.swing.JMenu jMRelatorios;
+    private javax.swing.JMenu jMSair;
     private javax.swing.JMenu jMSobre;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

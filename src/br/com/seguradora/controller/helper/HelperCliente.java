@@ -35,19 +35,19 @@ public class HelperCliente {
          return modelo;
     }
     
-    public void setarModelo(ModeloCliente modelo){
-        String id          = modelo.getId();
-        String nome        = modelo.getNome();
-        String rg          = modelo.getRg();
-        String cpf         = modelo.getCpf();
-        String logradouro  = modelo.getLogradouro();
-        String nr          = modelo.getNr();
-        String complemento = modelo.getComplemento();
-        String bairro      = modelo.getBairro();
-        String cidade      = modelo.getCidade();
-        String uf          = modelo.getUf();
-        String cep         = modelo.getCep();
-        String tel         = modelo.getTel();
+    public void setarModelo(ModeloCliente cliente){
+        String id          = cliente.getId();
+        String nome        = cliente.getNome();
+        String rg          = cliente.getRg();
+        String cpf         = cliente.getCpf();
+        String logradouro  = cliente.getLogradouro();
+        String nr          = cliente.getNr();
+        String complemento = cliente.getComplemento();
+        String bairro      = cliente.getBairro();
+        String cidade      = cliente.getCidade();
+        String uf          = cliente.getUf();
+        String cep         = cliente.getCep();
+        String tel         = cliente.getTel();
          
         view.getjTCod().setText(id);
         view.getjTNome().setText(nome);

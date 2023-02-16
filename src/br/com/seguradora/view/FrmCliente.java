@@ -73,7 +73,7 @@ public class FrmCliente extends javax.swing.JFrame {
         jBEditarCliente3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jBExcluirCliente1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        jLSublinhamento = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro Cliente");
@@ -85,7 +85,7 @@ public class FrmCliente extends javax.swing.JFrame {
 
         jLTitulo.setFont(new java.awt.Font("Stylus BT", 1, 36)); // NOI18N
         jLTitulo.setText("CADASTRO DE CLIENTE");
-        getContentPane().add(jLTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+        getContentPane().add(jLTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
 
         jLNome.setText("Nome:");
         getContentPane().add(jLNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 110, 25));
@@ -165,7 +165,7 @@ public class FrmCliente extends javax.swing.JFrame {
         jLEndereco.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
         getContentPane().add(jLEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 630, 170));
 
-        jBImprimirCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/printer_resized.png"))); // NOI18N
+        jBImprimirCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/seguradora/imagens/printer.png"))); // NOI18N
         jBImprimirCliente.setText("Imprimir");
         jBImprimirCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,8 +213,8 @@ public class FrmCliente extends javax.swing.JFrame {
         });
         getContentPane().add(jBExcluirCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 430, 140, 70));
 
-        jLabel3.setText("_______________________________________________________________________");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, -1));
+        jLSublinhamento.setText("_____________________________________________________________");
+        getContentPane().add(jLSublinhamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 360, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -223,7 +223,7 @@ public class FrmCliente extends javax.swing.JFrame {
     private void jBCadastrarCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarCliente1ActionPerformed
         try {
             // TODO add your handling code here:
-            controller.cadastrarCliente();
+            this.controller.cadastrarCliente();
         } catch (SQLException ex) {
             Logger.getLogger(FrmCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -238,7 +238,7 @@ public class FrmCliente extends javax.swing.JFrame {
     private void jBPesquisarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPesquisarClienteActionPerformed
         try {
             // TODO add your handling code here:
-            controller.pesquisarCliente();
+            this.controller.pesquisarCliente();
         } catch (SQLException ex) {
             Logger.getLogger(FrmCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -247,18 +247,27 @@ public class FrmCliente extends javax.swing.JFrame {
     private void jBEditarCliente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditarCliente3ActionPerformed
         try {
             // TODO add your handling code here:
-            controller.atualizarCliente();
+            this.controller.atualizarCliente();
         } catch (SQLException ex) {
             Logger.getLogger(FrmCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jBEditarCliente3ActionPerformed
 
     private void jBImprimirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBImprimirClienteActionPerformed
-
+        try {
+            this.controller.relCliente();
+        } catch (SQLException ex) {
+            Logger.getLogger(FrmCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBImprimirClienteActionPerformed
 
     private void jBExcluirCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirCliente1ActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            this.controller.apagarCliente();
+        } catch (SQLException ex) {
+            Logger.getLogger(FrmCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBExcluirCliente1ActionPerformed
 
     /**
@@ -319,11 +328,11 @@ public class FrmCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLNome;
     private javax.swing.JLabel jLNr;
     private javax.swing.JLabel jLRg;
+    private javax.swing.JLabel jLSublinhamento;
     private javax.swing.JLabel jLTelefone;
     private javax.swing.JLabel jLTitulo;
     private javax.swing.JLabel jLUf;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTextField jTBairro;
     private javax.swing.JTextField jTCidade;

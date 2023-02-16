@@ -4,10 +4,12 @@
  */
 package br.com.seguradora.controller;
 
+import br.com.seguradora.connection.ConnectionFactory;
 import br.com.seguradora.controller.helper.HelperCliente;
 import br.com.seguradora.dao.DaoCliente;
 import br.com.seguradora.modelo.ModeloCliente;
 import br.com.seguradora.view.FrmCliente;
+import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
@@ -21,6 +23,7 @@ public class ControllerCliente {
     private DaoCliente dao;
     private FrmCliente view;
     private HelperCliente helper;
+    Connection conn;
 
     public ControllerCliente(FrmCliente view) {
         this.view = view;
@@ -83,9 +86,11 @@ public class ControllerCliente {
     public void relCliente () throws SQLException{
         int confirma = JOptionPane.showConfirmDialog(null,"Confirma impressão?","",JOptionPane.YES_NO_OPTION);
         String caminho = "RelatorioCliente.jasper"; ///c:/RelatorioCliente.jasper
+        conn = new ConnectionFactory().getConnection();
+        
         if (confirma == JOptionPane.YES_OPTION){
         try {
-        net.sf.jasperreports.engine.JasperPrint print = net.sf.jasperreports.engine.JasperFillManager.fillReport(caminho,null,conexao);
+        net.sf.jasperreports.engine.JasperPrint print = net.sf.jasperreports.engine.JasperFillManager.fillReport(caminho,null,conn);
         net.sf.jasperreports.view.JasperViewer.viewReport(print,false);
         } catch (JRException e) {
         JOptionPane.showMessageDialog(null,e);
